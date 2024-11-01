@@ -1,0 +1,118 @@
+\documentclass[a4paper]{scrartcl}
+\usepackage{johnke}
+\begin{document}
+
+\thispagestyle{empty} % Stop the page count at the bottom of the first page
+
+\begin{cv}{\spacedallcaps{$name$}}
+
+\vspace{1.5em} % Your name
+
+\NewEntry{address}{
+  $for(address)$
+    $address$$sep$, 
+  $endfor$
+  }
+
+\NewEntry{email}{\href{mailto:$email$}{$email$}} % Email address
+
+\NewEntry{website}{\href{$www$}{$www$}} % Personal website
+
+\NewEntry{phone}{$tel$}
+
+\vspace{1em} % Extra white space between the personal information section and goal
+
+% \noindent\spacedlowsmallcaps{Overview}\vspace{1em} % Goal heading, could be used for a quotation or short profile instead
+\section*{Overview}
+
+\Description{\begin{itemize}
+$for(overview)$
+\item $overview$
+$endfor$
+
+\end{itemize}}\vspace{1.4em} % Goal text
+
+%----------------------------------------------------------------------------------------
+% COMPUTER SKILLS
+%----------------------------------------------------------------------------------------
+
+\section*{Key IT Skills}
+% \spacedlowsmallcaps{Computer Skills}\vspace{1em}
+
+\Description{\MarginText{Advanced}
+$for(skills.advanced)$
+$skills.advanced$$sep$, 
+$endfor$
+}
+
+\Description{\MarginText{Intermediate}
+$for(skills.intermediate)$
+$skills.intermediate$$sep$, 
+$endfor$
+}
+
+\vspace{0.8em} % Extra space between major sections
+
+\section*{work experience}
+
+$for(experience)$
+\NewEntry{$experience.date$}{\footnotesize $experience.title$, $if(experience.place)$\textsc{$experience.place$}, $endif$ $experience.location$}
+
+\Description{$if(experience.place)$\MarginText{$experience.place$}$endif$$experience.description$
+$if(experience.highlights)$
+\begin{itemize}
+$for(experience.highlights)$
+\item $experience.highlights$
+$endfor$
+\end{itemize}
+$endif$
+}
+
+$endfor$
+
+%------------------------------------------------
+
+\vspace{0.8em} % Extra space between major sections
+
+
+%----------------------------------------------------------------------------------------
+% EDUCATION
+%----------------------------------------------------------------------------------------
+
+% \spacedlowsmallcaps{Education}\vspace{1em}
+\section*{Education}
+
+$for(education)$
+\NewEntry{$education.date$}{\textsc{\footnotesize $education.place$}}
+
+\Description{\MarginText{$education.grade.name$}\textit{$education.grade.score$} -- $education.grade.major$ \\
+$education.description$}
+$endfor$
+\vspace{1em} % Extra space between major sections
+
+\section*{Notes}
+% \spacedlowsmallcaps{Other Information}\vspace{1em}
+
+\Description{$notes$}
+
+\vspace{-0.5em} % Negative vertical space to counteract the vertical space between every \Description command
+
+$if(interests)$
+\Description{Interests include: \begin{itemize}
+$for(interests)$
+\item $interests$
+$endfor$
+\end{itemize}
+}
+$endif$
+
+\vspace{1em}
+
+\small References available on request.
+
+
+\vspace{1em}
+
+\end{cv}
+
+\end{document}
