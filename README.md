@@ -16,8 +16,12 @@ This is scratching a very sick and twisted personal itch and I don't expect it t
 - Pandoc
 - A working LaTeX installation
 
-## Commands
+## Usage
 
-- `make cv` - generates a CV in PDF format
-- `make coverletter_job` - generates a PDF cover letter based on `coverletter_job.md`. This is semi-variablised so if you have `coverletter_otherjob.md`, then you could run `make coverletter_otherjob`.
-- `make clean` - the two commands above try to tidy up after themselves, but they might miss some things
+Update `cv.yaml` with your details. To generate a PDF, run `make cv`.
+
+For cover letters, copy `coverletter_job.md` to `coverletter_<jobname>.md` and update that file using standard markdown. Then run `make coverletter_<jobname>` to generate a PDF. For example, if you have `coverletter_microsoft.md`, then you could run `make coverletter_microsoft`.
+
+## Credits
+
+The styling is based on [Alessandro Plasmati's classicthesis template](https://www.latextemplates.com/template/classicthesis-styled-cv).
